@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { formatTime } from './utils/FormatTime';
 
 const App = () => {
   const [time, setTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [timeStart, setTimeStart] = useState(false);
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -30,15 +30,6 @@ const App = () => {
   const handleReset = () => {
     setIsActive(false);
     setTime(0);
-  };
-
-  const formatTime = (time) => {
-    const getSeconds = `0${time % 60}`.slice(-2);
-    const minutes = Math.floor(time / 60);
-    const getMinutes = `0${minutes % 60}`.slice(-2);
-    const getHours = `0${Math.floor(time / 3600)}`.slice(-2);
-
-    return `${getHours} : ${getMinutes} : ${getSeconds}`;
   };
 
   return (
